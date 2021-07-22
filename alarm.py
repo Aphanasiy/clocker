@@ -40,9 +40,10 @@ def alarm(track):
     t.release()
 
 
-stime = get_sleep_time()
+mtime = get_sleep_time() // 60
 track = choose_track()
 print("")
-print(f"It will be alarmed in {stime // 60} minutes")
-time.sleep(stime)
+for t in range(mtime, -1, -1):
+    print(f"  It will be alarmed in {t} minutes           \r", end='', flush=True)
+    time.sleep(60)
 alarm(track)
